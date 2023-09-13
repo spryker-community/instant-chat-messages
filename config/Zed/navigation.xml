@@ -490,6 +490,14 @@
                 <controller>list</controller>
                 <action>index</action>
             </statemachines-index>
+            <chat-message>
+                <label>Chat</label>
+                <title>Chat</title>
+                <bundle>chat-message</bundle>
+                <controller>index</controller>
+                <action>index</action>
+                <visible>1</visible>
+            </chat-message>
         </pages>
     </administration>
     <maintenance>

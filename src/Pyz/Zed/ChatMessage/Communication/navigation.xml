@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+    <administration>
+        <label>Administration</label>
+        <title>Administration</title>
+        <icon>fa-users-cog</icon>
+        <pages>
+            <chat-message>
+                <label>Chat</label>
+                <title>Chat</title>
+                <bundle>chat-message</bundle>
+                <controller>index</controller>
+                <action>index</action>
+                <visible>1</visible>
+            </chat-message>
+        </pages>
+    </administration>
+</config>

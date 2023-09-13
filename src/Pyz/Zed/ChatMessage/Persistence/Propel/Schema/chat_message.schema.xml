@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<database xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          name="zed"
+          xsi:noNamespaceSchemaLocation="https://static.spryker.com/schema-01.xsd"
+          namespace="Orm\Zed\ChatMessage\Persistence"
+          package="src.Orm.Zed.ChatMessage.Persistence">
+
+    <table name="pyz_chat_message" idMethod="native" identifierQuoting="true" allowPkInsert="true">
+        <column name="id_chat" required="true" type="INTEGER" primaryKey="true" autoIncrement="true"/>
+        <column name="id_chat_message" required="true" type="INTEGER" primaryKey="true" autoIncrement="true"/>
+        <column name="user" required="true" type="VARCHAR" default="false"/>
+        <column name="message" required="true" type="VARCHAR" default="false"/>
+        <column name="date" required="true" type="VARCHAR" default="false"/>
+    </table>
+</database>
