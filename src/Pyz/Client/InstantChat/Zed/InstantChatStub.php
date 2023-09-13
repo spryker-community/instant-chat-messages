@@ -7,9 +7,6 @@
 
 namespace Pyz\Client\InstantChat\Zed;
 
-use Generated\Shared\Transfer\AddressTransfer;
-use Generated\Shared\Transfer\CustomerResponseTransfer;
-use Generated\Shared\Transfer\CustomerTransfer;
 use Generated\Shared\Transfer\InstantChatRequestTransfer;
 use Generated\Shared\Transfer\InstantChatResponseTransfer;
 use Spryker\Client\ZedRequest\ZedRequestClient;
