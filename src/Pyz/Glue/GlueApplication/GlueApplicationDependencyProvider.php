@@ -7,6 +7,7 @@
 
 namespace Pyz\Glue\GlueApplication;
 
+use Pyz\Glue\InstantChatRestApi\Plugin\InstantChatResourceRoutePlugin;
 use Spryker\Glue\AgentAuthRestApi\Plugin\GlueApplication\AgentAccessTokenRestRequestValidatorPlugin;
 use Spryker\Glue\AgentAuthRestApi\Plugin\GlueApplication\AgentAccessTokenRestUserFinderPlugin;
 use Spryker\Glue\AgentAuthRestApi\Plugin\GlueApplication\AgentAccessTokensResourceRoutePlugin;
@@ -298,6 +299,7 @@ class GlueApplicationDependencyProvider extends SprykerGlueApplicationDependency
             new ConfigurableBundleTemplatesResourceRoutePlugin(),
             new ConfiguredBundlesResourceRoutePlugin(),
             new CartCodesResourceRoutePlugin(),
+            new InstantChatResourceRoutePlugin()
         ];
     }
 
