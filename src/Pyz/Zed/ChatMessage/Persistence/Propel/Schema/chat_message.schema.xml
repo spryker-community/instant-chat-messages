@@ -6,7 +6,7 @@
           package="src.Orm.Zed.ChatMessage.Persistence">
 
     <table name="pyz_chat_message" idMethod="native" identifierQuoting="true" allowPkInsert="true">
-        <column name="id_chat" required="true" type="INTEGER" primaryKey="true" autoIncrement="true"/>
+        <column name="id_chat" required="true" type="INTEGER" primaryKey="true" />
         <column name="id_chat_message" required="true" type="INTEGER" primaryKey="true" autoIncrement="true"/>
         <column name="user" required="true" type="VARCHAR" default="false"/>
         <column name="message" required="true" type="VARCHAR" default="false"/>

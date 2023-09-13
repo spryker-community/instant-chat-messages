@@ -1,15 +1,14 @@
 <?php
 
 /**
- * This file is part of the Spryker Suite.
+ * This file is part of the Spryker Commerce OS.
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
 namespace Pyz\Zed\ChatMessage\Communication\Table;
 
-use Orm\Zed\ChatMessage\Persistence\Base\PyzChatQuery;
+use Orm\Zed\ChatMessage\Persistence\Base\PyzChatMessageQuery;
 use Orm\Zed\ChatMessage\Persistence\Map\PyzChatMessageTableMap;
-use Orm\Zed\ChatMessage\Persistence\Map\PyzChatTableMap;
 use Pyz\Zed\ChatMessage\Persistence\ChatMessageQueryContainerInterface;
 use Spryker\Zed\Gui\Communication\Table\AbstractTable;
 use Spryker\Zed\Gui\Communication\Table\TableConfiguration;
@@ -22,12 +21,12 @@ class ChatMessageTable extends AbstractTable
     public const ACTIONS = 'actions';
 
     /**
-     * @var ChatMessageQueryContainerInterface
+     * @var \Pyz\Zed\ChatMessage\Persistence\ChatMessageQueryContainerInterface
      */
     protected ChatMessageQueryContainerInterface $chatMessageQueryContainer;
 
     /**
-     * @param ChatMessageQueryContainerInterface $chatMessageQueryContainer
+     * @param \Pyz\Zed\ChatMessage\Persistence\ChatMessageQueryContainerInterface $chatMessageQueryContainer
      */
     public function __construct(
         ChatMessageQueryContainerInterface $chatMessageQueryContainer,
@@ -45,7 +44,9 @@ class ChatMessageTable extends AbstractTable
         $config->setHeader([
             PyzChatMessageTableMap::COL_ID_CHAT => 'Chat Id',
             PyzChatMessageTableMap::COL_ID_CHAT_MESSAGE => 'Chat Message Id',
+            PyzChatMessageTableMap::COL_USER => 'User',
             PyzChatMessageTableMap::COL_MESSAGE => 'Message',
+            PyzChatMessageTableMap::COL_DATE => 'Date',
             static::ACTIONS => self::ACTIONS,
         ]);
 
@@ -64,18 +65,55 @@ class ChatMessageTable extends AbstractTable
         return $config;
     }
 
-    protected function prepareData(TableConfiguration $config)
+    /**
+     * @param array $chatMessages
+     *
+     * @return string
+     */
+    protected function addButtons(array $chatMessages): string
     {
-        return $this->runQuery($this->prepareQuery(), $config);
+        $buttons = [];
+        $buttons[] = $this->generateViewButton(
+            sprintf('chat-message/view?id-chat=%d', $chatMessages['IdChat']),
+            'View',
+        );
+        $buttons[] = $this->generateRemoveButton(
+            sprintf('chat-message/remove-chat?id-chat=%d', $chatMessages['IdChat']),
+            'Remove',
+        );
 
-
+        return implode(' ', $buttons);
     }
 
     /**
-     * @return PyzChatQuery
+     * @param TableConfiguration $config
+     *
+     * @return array
      */
-    protected function prepareQuery(): PyzChatQuery
+    protected function prepareData(TableConfiguration $config)
     {
-       return $this->chatMessageQueryContainer->queryChat();
+        $result = $this->runQuery($this->prepareQuery(), $config, true);
+        $dataArray = $result->toArray();
+        $chatMessages = [];
+        foreach ($dataArray as $data) {
+            $data = [];
+            $data[PyzChatMessageTableMap::COL_ID_CHAT] = $data['IdChat'];
+            $data[PyzChatMessageTableMap::COL_ID_CHAT_MESSAGE] = $data['IdChatMessage'];
+            $data[PyzChatMessageTableMap::COL_USER] = $data['User'];
+            $data[PyzChatMessageTableMap::COL_MESSAGE] = $data['Message'];
+            $data[PyzChatMessageTableMap::COL_DATE] = $data['Date'];
+            $data[static::ACTIONS] = $this->addButtons($data);
+            $chatMessages[] = $data;
+        }
+
+        return $chatMessages;
+    }
+
+    /**
+     * @return \Orm\Zed\ChatMessage\Persistence\Base\PyzChatMessageQuery
+     */
+    protected function prepareQuery(): PyzChatMessageQuery
+    {
+        return $this->chatMessageQueryContainer->queryChatMessage();
     }
 }

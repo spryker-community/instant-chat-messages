@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * This file is part of the Spryker Commerce OS.
+ * For full license information, please view the LICENSE file that was distributed with this source code.
+ */
+
 namespace Pyz\Zed\ChatMessage\Communication\Controller;
 
 use Spryker\Zed\Kernel\Communication\Controller\AbstractController;
@@ -7,6 +12,7 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 
 /**
  * @method \Pyz\Zed\ChatMessage\Communication\ChatMessageCommunicationFactory getFactory()
+ * @method \Pyz\Zed\ChatMessage\Persistence\ChatMessageQueryContainerInterface getQueryContainer()
  */
 class IndexController extends AbstractController
 {
