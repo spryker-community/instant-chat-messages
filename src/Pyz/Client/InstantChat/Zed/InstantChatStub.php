@@ -37,7 +37,9 @@ class InstantChatStub implements InstantChatStubInterface
     public function ask(InstantChatRequestTransfer $instantChatRequestTransfer): InstantChatResponseTransfer
     {
         /** @var InstantChatResponseTransfer $instantChatResponseTransfer */
-        $instantChatResponseTransfer = $this->zedStub->call('/instant-chat/gateway/ask', $instantChatRequestTransfer);
+        //$instantChatResponseTransfer = $this->zedStub->call('/instant-chat/gateway/ask', $instantChatRequestTransfer);
+        $instantChatResponseTransfer = new InstantChatResponseTransfer();
+        $instantChatResponseTransfer->setAnswer('Yes');
 
         return $instantChatResponseTransfer;
     }

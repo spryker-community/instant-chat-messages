@@ -2,8 +2,9 @@
 
 namespace Pyz\Glue\InstantChatRestApi\Plugin;
 
+use Generated\Shared\Transfer\InstantChatRequestTransfer;
 use Generated\Shared\Transfer\RestInstantMessageRequestAttributesTransfer;
-use Pyz\Glue\InstantChatRestApi\InstantChatApiConfig;
+use Pyz\Glue\InstantChatRestApi\InstantChatRestApiConfig;
 use Spryker\Glue\GlueApplicationExtension\Dependency\Plugin\ResourceRouteCollectionInterface;
 use Spryker\Glue\GlueApplicationExtension\Dependency\Plugin\ResourceRoutePluginInterface;
 use Spryker\Glue\Kernel\AbstractPlugin;
@@ -22,7 +23,7 @@ class InstantChatResourceRoutePlugin extends AbstractPlugin implements ResourceR
 
     public function getResourceType(): string
     {
-        return InstantChatApiConfig::RESOURCE_INSTANT_CHAT;
+        return InstantChatRestApiConfig::RESOURCE_INSTANT_CHAT;
     }
 
     public function getController(): string
@@ -32,6 +33,6 @@ class InstantChatResourceRoutePlugin extends AbstractPlugin implements ResourceR
 
     public function getResourceAttributesClassName(): string
     {
-        return RestInstantMessageRequestAttributesTransfer::class;
+        return InstantChatRequestTransfer::class;
     }
 }
