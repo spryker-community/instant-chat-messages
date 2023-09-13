@@ -11,4 +11,9 @@ use Spryker\Zed\Kernel\AbstractBundleConfig;
 
 class InstantChatConfig extends AbstractBundleConfig
 {
+
+    public function getOpenAiToken(): string
+    {
+        return $this->get('API_KEY_OPEN_AI');
+    }
 }

@@ -10,13 +10,19 @@ use Kambo\Langchain\LLMs\OpenAI;
 
 class AiAsker implements AiAskerInterface
 {
-    private const OPENID_API_KEY = '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';
+
+    private string $openAiApiKey;
+
+    public function __construct(string $openAiApiKey)
+    {
+        $this->openAiApiKey = $openAiApiKey;
+    }
 
     public function ask(InstantChatRequestTransfer $instantChatRequestTransfer): InstantChatResponseTransfer
     {
         //TODO REFACTOR THIS SHIT!!!!!!!!!
 
-        putenv(sprintf('OPENAI_API_KEY=%s', self::OPENID_API_KEY));
+        putenv(sprintf('OPENAI_API_KEY=%s', $this->openAiApiKey));
 
         $loader = new TextLoader(APPLICATION_ROOT_DIR . '/data/ai/spryker_faq.txt');
 

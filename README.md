@@ -182,3 +182,11 @@ See Glue API reference at [REST API reference](https://docs.spryker.com/docs/sco
 ## Contributing to the repository
 
 For contribution guidelines, see [Code contribution guide](https://docs.spryker.com/docs/scos/dev/code-contribution-guide.html#opening-pull-requests)
+
+
+## Configure OPEN_AI
+For being able to send OpenAI Requests, an api key is needed. You can configure the key like
+
+```php
+$config['API_KEY_OPEN_AI'] = 'YOUR OPENID KEY';
+```

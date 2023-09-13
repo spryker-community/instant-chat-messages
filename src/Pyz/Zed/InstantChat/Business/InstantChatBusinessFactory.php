@@ -9,13 +9,17 @@ namespace Pyz\Zed\InstantChat\Business;
 
 use Pyz\Zed\InstantChat\Business\Asker\AiAsker;
 use Pyz\Zed\InstantChat\Business\Asker\AiAskerInterface;
+use Pyz\Zed\InstantChat\InstantChatConfig;
 use Spryker\Zed\Kernel\Business\AbstractBusinessFactory;
 
+/**
+ * @method InstantChatConfig getConfig()
+ */
 class InstantChatBusinessFactory extends AbstractBusinessFactory
 {
 
     public function createAiAsker(): AiAskerInterface
     {
-        return new AiAsker();
+        return new AiAsker($this->getConfig()->getOpenAiToken());
     }
 }
