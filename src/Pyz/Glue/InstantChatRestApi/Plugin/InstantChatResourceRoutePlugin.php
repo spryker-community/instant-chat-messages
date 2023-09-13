@@ -33,6 +33,6 @@ class InstantChatResourceRoutePlugin extends AbstractPlugin implements ResourceR
 
     public function getResourceAttributesClassName(): string
     {
-        return InstantChatRequestTransfer::class;
+        return RestInstantMessageRequestAttributesTransfer::class;
     }
 }

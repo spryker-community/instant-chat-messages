@@ -3,13 +3,19 @@
 namespace Pyz\Glue\InstantChatRestApi\Processor;
 
 use Generated\Shared\Transfer\InstantChatRequestTransfer;
+use Generated\Shared\Transfer\RestInstantMessageRequestAttributesTransfer;
+use Spryker\Glue\GlueApplication\Rest\JsonApi\RestResponseInterface;
 use Spryker\Glue\GlueApplication\Rest\Request\Data\RestRequestInterface;
 
 interface InstantChatMapperInterface
 {
     /**
-     * @param RestRequestInterface $request
+     * @param RestInstantMessageRequestAttributesTransfer $restInstantMessageRequestAttributesTransfer
+     * @param InstantChatRequestTransfer $instantChatRequestTransfer
      * @return InstantChatRequestTransfer
      */
-    public function mapRequestToInstantChatRequestTransfer(RestRequestInterface $request): InstantChatRequestTransfer;
+    public function mapRestInstantMessageRequestToInstantChatRequestTransfer(
+        RestInstantMessageRequestAttributesTransfer $restInstantMessageRequestAttributesTransfer,
+        InstantChatRequestTransfer $instantChatRequestTransfer
+    ): InstantChatRequestTransfer;
 }
